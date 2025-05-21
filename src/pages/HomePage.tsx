@@ -52,29 +52,36 @@ const HomePage = () => {
         <h2 className="text-3xl font-bold mb-8">Featured Products</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {featuredProducts.map(product => (
-            <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-60 object-cover"
-              />
-              <div className="p-6 flex flex-col gap-2">
-                <h3 className="font-bold text-lg">{product.name}</h3>
-                <p className="text-neutral-500 text-sm">By {product.designer}</p>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="bg-black text-white px-3 py-1 rounded-full text-xs">{product.category}</span>
-                  <span className="font-semibold text-black">{product.price}</span>
-                </div>
-                <p className="text-neutral-700 text-sm mt-2">{product.description}</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {product.printerCompatibility && product.printerCompatibility.map((printer: string, idx: number) => (
-                    <span key={idx} className="bg-neutral-100 text-black px-2 py-1 rounded-full text-xs border border-neutral-200">
-                      {printer}
-                    </span>
-                  ))}
+            <Link
+              key={product.id}
+              to={`/model/${product.id}`}
+              className="block group"
+              style={{ textDecoration: 'none' }}
+            >
+              <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col group-hover:shadow-xl transition-shadow">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-60 object-cover group-hover:scale-105 transition-transform"
+                />
+                <div className="p-6 flex flex-col gap-2">
+                  <h3 className="font-bold text-lg group-hover:text-black/80 transition-colors">{product.name}</h3>
+                  <p className="text-neutral-500 text-sm">By {product.designer}</p>
+                  <div className="flex items-center gap-2 mt-2">
+                    <span className="bg-black text-white px-3 py-1 rounded-full text-xs">{product.category}</span>
+                    <span className="font-semibold text-black">{product.price}</span>
+                  </div>
+                  <p className="text-neutral-700 text-sm mt-2">{product.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {product.printerCompatibility && product.printerCompatibility.map((printer: string, idx: number) => (
+                      <span key={idx} className="bg-neutral-100 text-black px-2 py-1 rounded-full text-xs border border-neutral-200">
+                        {printer}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="text-center mt-12">
