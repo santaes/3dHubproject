@@ -20,24 +20,24 @@ const Navbar: React.FC = () => {
   // Helper for avatar fallback
   const [avatarError, setAvatarError] = useState(false);
   // Debug avatar logic
-  console.log('[Navbar] user.picture:', user?.picture);
-  console.log('[Navbar] avatarError:', avatarError);
+ // console.log('[Navbar] user.picture:', user?.picture);
+ // console.log('[Navbar] avatarError:', avatarError);
   // Always use user.picture if present and not errored, fallback to default
   const avatarSrc = !avatarError && user?.picture
     ? user.picture
     : '/default-avatar.png';
-  console.log('[Navbar] avatarSrc:', avatarSrc);
+  //console.log('[Navbar] avatarSrc:', avatarSrc);
 
   // Dropdown close on logout
   const handleLogout = () => {
-    console.log('[Navbar] Logout clicked', { user });
+  //  console.log('[Navbar] Logout clicked', { user });
     setIsProfileOpen(false);
     logout();
   };
 
   // Debug logs
-  console.log('[Navbar] isAuthenticated:', isAuthenticated);
-  console.log('[Navbar] user:', user);
+ // console.log('[Navbar] isAuthenticated:', isAuthenticated);
+ // console.log('[Navbar] user:', user);
 
   // Profile dropdown: close on outside click
   React.useEffect(() => {
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
         avatarRef.current && !avatarRef.current.contains(e.target as Node) &&
         dropdownRef.current && !dropdownRef.current.contains(e.target as Node)
       ) {
-        console.log('[Navbar] Outside click, closing dropdown');
+      //  console.log('[Navbar] Outside click, closing dropdown');
         setIsProfileOpen(false);
       }
     }
@@ -96,10 +96,10 @@ const Navbar: React.FC = () => {
       tabIndex={0}
       ref={avatarRef}
       onClick={() => {
-        console.log('[Navbar] Avatar clicked');
+      //  console.log('[Navbar] Avatar clicked');
         setIsProfileOpen((v) => {
           const newState = !v;
-          console.log('[Navbar] setIsProfileOpen', newState);
+      //    console.log('[Navbar] setIsProfileOpen', newState);
           return newState;
         });
       }}
@@ -138,13 +138,13 @@ const Navbar: React.FC = () => {
             <button
               className="block w-full text-sm text-primary-600 hover:underline mb-2 text-center bg-transparent border-0 p-0 cursor-pointer"
               onClick={() => {
-  console.log('[Navbar] View Profile clicked', { user });
+  //console.log('[Navbar] View Profile clicked', { user });
   setIsProfileOpen(false);
   if (user?.sub) {
-    console.log('[Navbar] Navigating to', `/profile/${user.sub}`);
+    //console.log('[Navbar] Navigating to', `/profile/${user.sub}`);
     navigate(`/profile/${user.sub}`);
   } else {
-    console.log('[Navbar] Navigating to /profile');
+    //console.log('[Navbar] Navigating to /profile');
     navigate('/profile');
   }
 }}
@@ -154,7 +154,7 @@ const Navbar: React.FC = () => {
             <div className="flex justify-center">
               <button
                 onClick={handleLogout}
-                className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 bg-transparent hover:bg-neutral-100 active:bg-neutral-200 h-10 px-4 flex items-center gap-2"
+                    className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 bg-transparent hover:bg-neutral-100 active:bg-neutral-200 h-10 px-4 flex items-center gap-2"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-log-out" aria-hidden="true"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
                 <span>Log Out</span>

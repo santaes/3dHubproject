@@ -41,7 +41,7 @@ const HomePage = () => {
           {featuredDesigners.slice(0, 3).map(designer => (
             <Link
               key={designer.id}
-              to={`/designers#${designer.id}`}
+              to={`/designer/${designer.id}`}
               className="block group"
               style={{ textDecoration: 'none' }}
             >

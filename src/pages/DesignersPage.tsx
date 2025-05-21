@@ -1,19 +1,46 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { featuredDesigners } from '../data/designers';
 
 const DesignersPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-16">
+      {/* Why Choose 3D Fashion Lab Section */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold mb-8 text-center">Why Choose 3D Fashion Lab</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-white shadow-lg rounded-xl p-8 flex flex-col items-center text-center hover:shadow-2xl transition-shadow">
+            <span className="text-5xl mb-4">🧑‍🎨</span>
+            <h3 className="text-xl font-semibold mb-2">Cutting-Edge Designers</h3>
+            <p className="text-neutral-600">Showcasing the most innovative minds in fashion, blending technology and creativity.</p>
+          </div>
+          <div className="bg-white shadow-lg rounded-xl p-8 flex flex-col items-center text-center hover:shadow-2xl transition-shadow">
+            <span className="text-5xl mb-4">🧵</span>
+            <h3 className="text-xl font-semibold mb-2">Curated 3D Models</h3>
+            <p className="text-neutral-600">Discover unique, high-quality 3D printed pieces ready for your wardrobe or collection.</p>
+          </div>
+          <div className="bg-white shadow-lg rounded-xl p-8 flex flex-col items-center text-center hover:shadow-2xl transition-shadow">
+            <span className="text-5xl mb-4">🔒</span>
+            <h3 className="text-xl font-semibold mb-2">Secure Shopping</h3>
+            <p className="text-neutral-600">Enjoy a seamless and secure shopping experience with trusted payment providers.</p>
+          </div>
+        </div>
+      </section>
       <h1 className="text-4xl font-bold mb-12">Leading Fashion Designers</h1>
       <div className="grid md:grid-cols-2 gap-12">
         {featuredDesigners.map(designer => (
-          <div key={designer.id} className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-8">
+          <Link
+            key={designer.id}
+            to={`/designer/${designer.id}`}
+            className="block group"
+            style={{ textDecoration: 'none' }}
+          >
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden group-hover:shadow-xl transition-shadow">
               <div className="relative h-[400px] flex items-center justify-center bg-neutral-100">
                 <img 
                   src={designer.image} 
                   alt={designer.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                 />
               </div>
               <div className="p-8 flex flex-col justify-center">
@@ -71,7 +98,7 @@ const DesignersPage = () => {
                 )}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
