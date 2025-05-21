@@ -6,10 +6,12 @@ const ProfilePage = () => {
   const { id } = useParams();
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">User Profile</h1>
-      <UserProfile />
-      <p className="mb-4 mt-6 text-xs text-neutral-400">Viewing profile for user ID: {id}</p>
+    <div className="max-w-2xl mx-auto px-4 py-16">
+      <h1 className="text-4xl font-bold mb-8">User Profile</h1>
+      <div className="bg-white rounded-xl shadow-lg p-8">
+        <UserProfile />
+      </div>
+      <p className="mb-4 mt-6 text-xs text-neutral-400 text-center">Viewing profile for user ID: {id}</p>
     </div>
   );
 };
