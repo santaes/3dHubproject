@@ -39,10 +39,17 @@ const HomePage = () => {
         <h2 className="text-3xl font-bold mb-8">Featured Designers</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {featuredDesigners.slice(0, 3).map(designer => (
-            <div key={designer.id} className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col items-center p-6">
-              <img src={designer.image} alt={designer.name} className="w-32 h-48 object-cover rounded-lg mb-4" />
-              <h3 className="text-xl font-bold mb-2">{designer.name}</h3>
-            </div>
+            <Link
+              key={designer.id}
+              to={`/designers#${designer.id}`}
+              className="block group"
+              style={{ textDecoration: 'none' }}
+            >
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col items-center p-6 group-hover:shadow-xl transition-shadow">
+                <img src={designer.image} alt={designer.name} className="w-32 h-48 object-cover rounded-lg mb-4 group-hover:scale-105 transition-transform" />
+                <h3 className="text-xl font-bold mb-2 group-hover:text-black/80 transition-colors">{designer.name}</h3>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
